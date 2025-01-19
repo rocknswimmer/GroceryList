@@ -4,6 +4,8 @@ import { GlobalStyles } from './globalStyles.js';
 import { lightTheme, darkTheme } from './Themes.js';
 import Header from './Header.jsx';
 import axios from 'axios';
+import Inventory from './Inventory.jsx';
+import Grocery from './Grocery.jsx';
 
 
 function App() {
@@ -11,13 +13,25 @@ function App() {
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
   };
+  const [invMode,setInvMode] = useState(true);
+  const [groMode, setGroMode] = useState(false);
+
+  const viewInv = () => {
+    setInvMode(true);
+    setGroMode(false);
+  }
+  const viewGro = () => {
+    setInvMode(false);
+    setGroMode(true);
+  }
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
-        <Header theme={theme} themeToggler={themeToggler} home={false} />
-        <h1>Sleigh Checker</h1>
+        <Header theme={theme} themeToggler={themeToggler} viewInv={viewInv} viewGro={viewGro} />
+        {invMode && <Inventory/>}
+        {groMode && <Grocery />}
         {/* number of sleight to combo selector */}
         {/* sleight grid (size from selector) */}
       </>
