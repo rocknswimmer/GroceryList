@@ -1,5 +1,5 @@
 import React from 'react';
-import GroceryItem from './GroceryList.jsx';
+import GroceryItem from './GroceryItem.jsx';
 
 const Grocery = () => {
 
@@ -7,11 +7,11 @@ const Grocery = () => {
 
   return(
     <div>
-  <h1>Grocery page</h1>
-  {"123".split('').map(() => {
-    return <GroceryItem />
-  })}
-</div>
+      <h1>Grocery page</h1>
+      {"123".split('').map(() => {
+        return <GroceryItem />
+      })}
+    </div>
 )
 }
 
