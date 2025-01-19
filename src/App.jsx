@@ -5,7 +5,9 @@ function App() {
 
   return (
     <div>
-      <h1>Starter Code</h1>
+      <h1>Sleigh Checker</h1>
+      {/* number of sleight to combo selector */}
+      {/* sleight grid (size from selector) */}
     </div>
   )
 }
