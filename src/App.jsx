@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './globalStyles.js';
 import { lightTheme, darkTheme } from './Themes.js';
 import Header from './Header.jsx';
+import Footer from './Footer.jsx';
 import axios from 'axios';
 import Inventory from './Inventory.jsx';
 import Grocery from './Grocery.jsx';
@@ -25,6 +26,8 @@ function App() {
     setGroMode(true);
   }
 
+  const [login, setLogin] =  useState(false);/////////////update after login added
+
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
@@ -32,8 +35,7 @@ function App() {
         <Header theme={theme} themeToggler={themeToggler} viewInv={viewInv} viewGro={viewGro} />
         {invMode && <Inventory/>}
         {groMode && <Grocery />}
-        {/* number of sleight to combo selector */}
-        {/* sleight grid (size from selector) */}
+        {login && <Footer />}
       </>
     </ThemeProvider>
   )
