@@ -19,9 +19,18 @@ const pool = new Pool({
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(compression());
-
-
 app.use(express.static(path.join(__dirname, '../public')));
+
+
+app.post('/user', (req,res) => {
+  const {user} = req.body;
+  pool.query('insert into grocery_users (user_num) values ($1) on conflict do nothing returning *', [user], (err, data) => {
+    if (err) {
+      console.log('error posting user', err);
+    }
+    res.send('logged in')
+  })
+})
 
 
 app.listen(3023);
