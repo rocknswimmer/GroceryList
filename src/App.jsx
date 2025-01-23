@@ -48,6 +48,7 @@ function App() {
     axios.post('/user', {user: user})
     .then((res) => {
       localStorage.user = Number(user);
+      //get user info
       setLogin(true);
     })
   }
@@ -55,6 +56,21 @@ function App() {
   const logIn = () => {
     if(!issue){postUser();}
   }
+
+  const logIn100 = () => {
+    localStorage.user = 100;
+    setUser(100);
+    //get user info
+    setLogin(true);
+  }
+
+  useEffect(() => {
+    if(localStorage.user >= 0){
+      setUser(localStorage.user);
+      //get user data
+      setLogin(true);
+    }
+  }, [])
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
@@ -70,7 +86,7 @@ function App() {
           <div>
           <input type="text" name="userNumber" placeholder="Input a 1-2 digit number" onChange={updateUser}></input>
           <button onClick={logIn}>Login to a chosen user</button>
-          <button>Login as user 100</button>
+          <button onClick={logIn100}>Login as user 100</button>
           </div>
           {issue && <p>Input wrong size or not digits</p>}
         </div>}
