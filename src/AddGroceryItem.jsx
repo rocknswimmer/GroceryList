@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
-const AddGIForm = ({close}) => {
+const AddGIForm = ({close, update}) => {
   const [nameIssue, setNameIssue] = useState(true);
   const [quantityIssue, setQuantityIssue] = useState(true);
   const [unitsIssue, setUnitsIssue] = useState(true);
@@ -60,13 +60,12 @@ const AddGIForm = ({close}) => {
     if(!nameIssue && !quantityIssue && !unitsIssue){
       axios.post('/addGI', {name:name, quantity:quantity, units:units, user:localStorage.user})
       .then((res) => {
-        //get
-        //close modal
-        console.log(res.data);
+        update();
+        //console.log(res.data);
         close();
       })
       .catch((err) => {
-        console.log('error posting GI')
+        console.log('error posting GI',err)
       })
       //console.log(name,quantity, units);
 

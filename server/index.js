@@ -45,6 +45,16 @@ app.post('/addGI', (req,res) => {
 
 //GET
 
+app.get('/GL/:id', (req,res) => {
+  const user = req.params.id;
+  pool.query('select * from grocery_list where user_num = $1',[user],(err, data) => {
+    if (err) {
+      console.log('error getting GL')
+    }
+    res.send(data)
+  })
+})
+
 
 
 //PUT

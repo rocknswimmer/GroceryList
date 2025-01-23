@@ -28,7 +28,7 @@ function App() {
   }
 
   const [login, setLogin] =  useState(false);
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState('100');
   const [issue, setIssue]  = useState(false);
   const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
@@ -73,13 +73,33 @@ function App() {
     setLogin(false);
   }
 
+  const [groceryList, setGroceryList] = useState([]);
+
+  const getGL = () => {
+    axios.get(`/GL/${user}`)
+    .then((res) => {
+      //console.log(res.data)
+      setGroceryList(res.data.rows);
+    })
+    .catch((err) => {
+      console.log('error getting GL')
+    })
+
+  }
+
   useEffect(() => {
     if(localStorage.user >= 0){
       setUser(localStorage.user);
       //get user data
       setLogin(true);
     }
+    console.log("login effect")
   }, [])
+
+  useEffect(()=> {
+    getGL();
+    console.log("user effect")
+  },[user])
 
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
@@ -88,7 +108,7 @@ function App() {
         <Header theme={theme} themeToggler={themeToggler} viewInv={viewInv} viewGro={viewGro} login={login} logOut={logOut}/>
         {login && <h1>User {user}'s {invMode?'Inventory':'Grocery List'}</h1>}
         {login && invMode && <Inventory/>}
-        {login && groMode && <Grocery />}
+        {login && groMode && <Grocery groceryList={groceryList} updateGL={()=>{getGL()}} />}
         {!login &&
         <div>
           <h1>Input a user number or sign in as user 100</h1>
