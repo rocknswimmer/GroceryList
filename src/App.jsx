@@ -51,6 +51,9 @@ function App() {
       //get user info
       setLogin(true);
     })
+    .catch((err) => {
+      console.log('error posting user')
+    })
   }
 
   const logIn = () => {

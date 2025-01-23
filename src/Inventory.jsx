@@ -13,7 +13,6 @@ const Inventory = () => {
 
   return(
     <div>
-      <h1>Inventory page</h1>
       {"1234".split('').map((item, i) => {
         return <InventoryItem key={i}/>
       })}

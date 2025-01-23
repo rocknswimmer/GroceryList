@@ -23,7 +23,7 @@ const FooterContainer = styled.div`
 `;
 
 
-const Footer = ({viewInv}) => {
+const Footer = ({viewInv, addGI}) => {
 
 
 
@@ -38,7 +38,7 @@ const Footer = ({viewInv}) => {
         <button>Add to List</button>
       </div>}
       {!viewInv && <div>
-        <button >Add</button>
+        <button onClick={addGI} >Add</button>
         <button >Update</button>
         <button>Delete</button>
         <button>Receive</button>

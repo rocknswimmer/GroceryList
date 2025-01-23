@@ -21,6 +21,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(compression());
 app.use(express.static(path.join(__dirname, '../public')));
 
+//POST
 
 app.post('/user', (req,res) => {
   const {user} = req.body;
@@ -31,6 +32,28 @@ app.post('/user', (req,res) => {
     res.send('logged in')
   })
 })
+
+app.post('/addGI', (req,res) => {
+  const {name, quantity, units, user} = req.body;
+  pool.query('insert into grocery_list (user_num, item, quantity,units) values ($1,$2,$3,$4) returning *', [user, name, Number(quantity), units], (err, data) => {
+    if (err) {
+      console.log('error adding Grocery Item', err);
+    }
+    res.send('Item added')
+  })
+})
+
+//GET
+
+
+
+//PUT
+
+
+//DELTE
+
+
+
 
 
 app.listen(3023);
