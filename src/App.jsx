@@ -64,6 +64,12 @@ function App() {
     setLogin(true);
   }
 
+  const logOut = () => {
+    setUser('');
+    localStorage.user=-1;
+    setLogin(false);
+  }
+
   useEffect(() => {
     if(localStorage.user >= 0){
       setUser(localStorage.user);
@@ -76,7 +82,7 @@ function App() {
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
-        <Header theme={theme} themeToggler={themeToggler} viewInv={viewInv} viewGro={viewGro} login={login}/>
+        <Header theme={theme} themeToggler={themeToggler} viewInv={viewInv} viewGro={viewGro} login={login} logOut={logOut}/>
         {login && <h1>User {user}'s {invMode?'Inventory':'Grocery List'}</h1>}
         {login && invMode && <Inventory/>}
         {login && groMode && <Grocery />}
