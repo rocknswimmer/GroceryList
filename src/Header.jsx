@@ -23,7 +23,7 @@ const HeaderContainer = styled.div`
 `;
 
 
-const Header = ({ theme, themeToggler,viewInv, viewGro}) => {
+const Header = ({ theme, themeToggler,viewInv, viewGro, login}) => {
 
 
 
@@ -32,9 +32,11 @@ const Header = ({ theme, themeToggler,viewInv, viewGro}) => {
   return (
     <HeaderContainer data-testid='header'>
       <h1 className="version">Grocery List</h1>
+      {login && <div className="nav">
       <button onClick={viewInv}>Inventory</button>
       <button onClick={viewGro}>Grocery List</button>
-      <button>Login/out</button>
+      <button>Logout</button>
+      </div>}
       <div>
       <label className="switch">
         <input

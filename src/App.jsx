@@ -32,7 +32,7 @@ function App() {
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
-        <Header theme={theme} themeToggler={themeToggler} viewInv={viewInv} viewGro={viewGro} />
+        <Header theme={theme} themeToggler={themeToggler} viewInv={viewInv} viewGro={viewGro} login={login}/>
         {login && invMode && <Inventory/>}
         {login && groMode && <Grocery />}
         {!login &&
