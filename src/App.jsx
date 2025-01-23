@@ -33,9 +33,15 @@ function App() {
       <>
         <GlobalStyles />
         <Header theme={theme} themeToggler={themeToggler} viewInv={viewInv} viewGro={viewGro} />
-        {invMode && <Inventory/>}
-        {groMode && <Grocery />}
-        {login && <Footer />}
+        {login && invMode && <Inventory/>}
+        {login && groMode && <Grocery />}
+        {!login &&
+        <div>
+          <h1>Input a user number or sign in as user 100</h1>
+          <input type="text" name="userNumber" placeholder="Input a 1-2 digit number"></input>
+          <button>Login to a chosen user</button>
+          <button>Login as user 100</button>
+        </div>}
       </>
     </ThemeProvider>
   )

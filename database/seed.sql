@@ -23,3 +23,5 @@ CREATE TABLE grocery_inventory (
   item_location VARCHAR(100) NOT NULL DEFAULT NULL,
   expires VARCHAR(100) NOT NULL DEFAULT NULL
 );
+
+insert into grocery_users (user_num) values (100);
