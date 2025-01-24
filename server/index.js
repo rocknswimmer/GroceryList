@@ -49,7 +49,7 @@ app.get('/GL/:id', (req,res) => {
   const user = req.params.id;
   pool.query('select * from grocery_list where user_num = $1',[user],(err, data) => {
     if (err) {
-      console.log('error getting GL')
+      console.log('error getting Grocery List')
     }
     res.send(data)
   })
@@ -58,6 +58,16 @@ app.get('/GL/:id', (req,res) => {
 
 
 //PUT
+
+app.put('/UpdateGI', (req,res) =>{
+  const {name,quantity,units,user,itemNum} = req.body;
+  pool.query('update grocery_list set item = $1, quantity = $2, units = $3 where user_num = $4 and id = $5 returning *',[name,Number(quantity), units, Number(user), Number(itemNum)], (err, data) => {
+    if(err){
+      console.log('error updating Grocery Item')
+    }
+    res.send(data)
+  })
+})
 
 
 //DELTE

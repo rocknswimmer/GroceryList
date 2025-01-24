@@ -28,7 +28,7 @@ function App() {
   }
 
   const [login, setLogin] =  useState(false);
-  const [user, setUser] = useState('100');
+  const [user, setUser] = useState('-1');
   const [issue, setIssue]  = useState(false);
   const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
@@ -97,7 +97,9 @@ function App() {
   }, [])
 
   useEffect(()=> {
-    getGL();
+    if(Number(user) >=0 ){
+      getGL();
+    }
     console.log("user effect")
   },[user])
 
