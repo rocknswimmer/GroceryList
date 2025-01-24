@@ -6,7 +6,7 @@ const UpdateGIForm = ({item, update, close}) => {
   const [quantityIssue, setQuantityIssue] = useState(false);
   const [unitsIssue, setUnitsIssue] = useState(false);
   const [name, setName] = useState(item.item?item.item:'');
-  const [quantity, setQuantity] = useState(item.quantity?item.quantity:'');
+  const [quantity, setQuantity] = useState(item.quantity?item.quantity+'':'');
   const [units, setUnits] = useState(item.units?item.units:'');
 
   const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -56,9 +56,7 @@ const UpdateGIForm = ({item, update, close}) => {
 
   const submitUpdateGI =  (e) => {
     e.preventDefault();
-    console.log('submit happened')
     if(!nameIssue && !quantityIssue && !unitsIssue){
-      console.log('submitt issue free', name,quantity,units)
       axios.put(`/UpdateGI`, {name:name, quantity:quantity, units:units, user:localStorage.user, itemNum:item.id})
       .then((res) => {
         update();
