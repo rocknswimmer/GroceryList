@@ -72,6 +72,21 @@ app.put('/UpdateGI', (req,res) =>{
 
 //DELTE
 
+app.delete('/deleteGI/:id', (req, res) => {
+  const item = req.params.id;
+  pool.query('delete from grocery_list where id = $1', [item], (err, data) => {
+    if(err){
+      console.log('error deleting GI')
+      res.send(err);
+    }
+    else{
+       res.send('deleted Grocery Item')
+    }
+
+  })
+})
+
+
 
 
 
