@@ -23,7 +23,7 @@ const FooterContainer = styled.div`
 `;
 
 
-const Footer = ({addGI, updateGI, deleteGI}) => {
+const IFooter = ({}) => {
 
 
 
@@ -32,10 +32,10 @@ const Footer = ({addGI, updateGI, deleteGI}) => {
   return (
     <FooterContainer >
       <div>
-        <button onClick={addGI} >Add</button>
-        <button onClick={updateGI}>Update</button>
-        <button onClick={deleteGI}>Delete</button>
-        <button>Receive</button>
+        <button >Add Item</button>
+        <button >Update</button>
+        <button>Delete</button>
+        <button>Add to List</button>
       </div>
 
     </FooterContainer>
@@ -45,4 +45,4 @@ const Footer = ({addGI, updateGI, deleteGI}) => {
 
 
 
-export default Footer;
+export default IFooter;

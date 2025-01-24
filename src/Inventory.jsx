@@ -1,6 +1,6 @@
 import React from 'react';
 import InventoryItem from './InventoryItem.jsx';
-import Footer from './Footer.jsx';
+import IFooter from './IFooter.jsx';
 import Modal from './modal.js';
 import axios from 'axios';
 
@@ -16,7 +16,7 @@ const Inventory = () => {
       {"1234".split('').map((item, i) => {
         return <InventoryItem key={i}/>
       })}
-      <Footer viewInv={true}/>
+      <IFooter />
     </div>
   )
 }

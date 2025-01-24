@@ -31,7 +31,7 @@ const Grocery = ({groceryList, updateGL}) => {
 
       {viewDelete && <Modal close={()=>{setViewDelete(false)}} content={<DeleteGIForm item={itemObj}  close={()=>{setViewDelete(false)}} update={()=>{updateGL()}}/>}  />}
 
-      <Footer viewInv={false} addGI={() => {setViewAdd(true)}} updateGI={() => {setUpdateMode(!updateMode)}} deleteGI={() => {setDeleteMode(!deleteMode)}}/>
+      <Footer addGI={() => {setViewAdd(true)}} updateGI={() => {setUpdateMode(!updateMode)}} deleteGI={() => {setDeleteMode(!deleteMode)}}/>
     </div>
 )
 }
