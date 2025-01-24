@@ -93,14 +93,14 @@ function App() {
       //get user data
       setLogin(true);
     }
-    console.log("login effect")
+    //console.log("login effect")
   }, [])
 
   useEffect(()=> {
     if(Number(user) >=0 ){
       getGL();
     }
-    console.log("user effect")
+    //console.log("user effect")
   },[user])
 
   return (

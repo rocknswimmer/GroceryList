@@ -1,13 +1,16 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
-const UpdateGIForm = ({itemNum, update, close}) => {
-  const [nameIssue, setNameIssue] = useState(true);
-  const [quantityIssue, setQuantityIssue] = useState(true);
-  const [unitsIssue, setUnitsIssue] = useState(true);
-  const [name, setName] = useState('');
-  const [quantity, setQuantity] = useState('');
-  const [units, setUnits] = useState('');
+const UpdateGIForm = ({item, update, close}) => {
+  const [nameIssue, setNameIssue] = useState(false);
+  const [quantityIssue, setQuantityIssue] = useState(false);
+  const [unitsIssue, setUnitsIssue] = useState(false);
+  const [name, setName] = useState(item.item?item.item:'');
+  const [quantity, setQuantity] = useState(item.quantity?item.quantity:'');
+  const [units, setUnits] = useState(item.units?item.units:'');
+
+  const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  const allowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789., '.split('');
 
   const updateName = (e) => {
     let cur = e.target.value;
@@ -53,8 +56,10 @@ const UpdateGIForm = ({itemNum, update, close}) => {
 
   const submitUpdateGI =  (e) => {
     e.preventDefault();
+    console.log('submit happened')
     if(!nameIssue && !quantityIssue && !unitsIssue){
-      axios.put(`/UpdateGI`, {name:name, quantity:quantity, units:units, user:localStorage.user, itemNum:itemNum})
+      console.log('submitt issue free', name,quantity,units)
+      axios.put(`/UpdateGI`, {name:name, quantity:quantity, units:units, user:localStorage.user, itemNum:item.id})
       .then((res) => {
         update();
         //console.log(res.data);
@@ -74,15 +79,15 @@ const UpdateGIForm = ({itemNum, update, close}) => {
       <h1>Update Grocery List Item</h1>
       <form onSubmit={submitUpdateGI}>
       <lable>Item Name</lable>
-        <input onChange={updateName} type="text" placeholder="Apples"></input>
+        <input onChange={updateName} type="text" defaultValue={item.item}></input>
         {nameIssue && name.length > 0 && <p>Name is wrong size or has unapproved characters</p>}
         <br/>
         <lable>Quantity To Purchase</lable>
-        <input onChange={updateQuantity} type="text" placeholder="2"></input>
+        <input onChange={updateQuantity} type="text" defaultValue={item.quantity}></input>
         {quantityIssue && quantity.length > 0 && <p>Quantity is wrong size or is not digits</p>}
         <br/>
         <lable>Units</lable>
-        <input onChange={updateUnits} type="text" placeholder="Each"></input>
+        <input onChange={updateUnits} type="text" defaultValue={item.units}></input>
         {unitsIssue && units.length > 0 && <p>Units are the wrong size or have unapproved characters</p>}
         <br/>
         <button type="submit">Update Item</button>
