@@ -33,6 +33,12 @@ const Inventory = ({inventoryList, updateIL}) => {
 
       {viewDelete && <Modal close={()=>{setViewDelete(false)}} content={<DeleteIIForm item={itemObj}  close={()=>{setViewDelete(false)}} update={()=>{updateIL()}}/>}  />}
 
+      {/* recieve thoughts
+      import addGIForm
+      after adding deleteII
+
+      */}
+
       <IFooter addII={() => {setViewAdd(true)}} updateII={() => {setUpdateMode(!updateMode)}} deleteII={() => {setDeleteMode(!deleteMode)}} />
     </div>
   )
