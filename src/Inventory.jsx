@@ -5,6 +5,7 @@ import Modal from './modal.js';
 import axios from 'axios';
 import AddIIForm from './AddInventoryItem.jsx';
 import UpdateIIForm from './UpdateInventoryItem.jsx';
+import DeleteIIForm from './DeleteInventoryItem.jsx';
 
 
 const Inventory = ({inventoryList, updateIL}) => {
@@ -29,6 +30,9 @@ const Inventory = ({inventoryList, updateIL}) => {
       {viewAdd && <Modal close={()=>{setViewAdd(false)}} content={<AddIIForm close={()=>{setViewAdd(false)}} update={()=>{updateIL()}} />}/>}
 
       {viewUpdate && <Modal close={()=>{setViewUpdate(false)}} content={<UpdateIIForm item={itemObj} close={()=>{setViewUpdate(false)}} update={()=>{updateIL()}} />} />}
+
+      {viewDelete && <Modal close={()=>{setViewDelete(false)}} content={<DeleteIIForm item={itemObj}  close={()=>{setViewDelete(false)}} update={()=>{updateIL()}}/>}  />}
+
       <IFooter addII={() => {setViewAdd(true)}} updateII={() => {setUpdateMode(!updateMode)}} deleteII={() => {setDeleteMode(!deleteMode)}} />
     </div>
   )
