@@ -6,6 +6,7 @@ import axios from 'axios';
 import AddIIForm from './AddInventoryItem.jsx';
 import UpdateIIForm from './UpdateInventoryItem.jsx';
 import DeleteIIForm from './DeleteInventoryItem.jsx';
+import AddGIForm from './AddGroceryItem.jsx';
 
 
 const Inventory = ({inventoryList, updateIL}) => {
@@ -35,7 +36,9 @@ const Inventory = ({inventoryList, updateIL}) => {
 
       {/* recieve thoughts
       import addGIForm
-      after adding deleteII
+      plug up like update and delete with button saying add to grocery list or something
+      after adding DO NOT deleteII ************** delete should only be after use/when user chooses
+      will be different for recieve GI
 
       */}
 
