@@ -4,6 +4,7 @@ import IFooter from './IFooter.jsx';
 import Modal from './modal.js';
 import axios from 'axios';
 import AddIIForm from './AddInventoryItem.jsx';
+import UpdateIIForm from './UpdateInventoryItem.jsx';
 
 
 const Inventory = ({inventoryList, updateIL}) => {
@@ -24,7 +25,10 @@ const Inventory = ({inventoryList, updateIL}) => {
       })}
 
       {inventoryList.length == 0 && <p>No Items Currently On Your Inventory List</p>}
+
       {viewAdd && <Modal close={()=>{setViewAdd(false)}} content={<AddIIForm close={()=>{setViewAdd(false)}} update={()=>{updateIL()}} />}/>}
+
+      {viewUpdate && <Modal close={()=>{setViewUpdate(false)}} content={<UpdateIIForm item={itemObj} close={()=>{setViewUpdate(false)}} update={()=>{updateIL()}} />} />}
       <IFooter addII={() => {setViewAdd(true)}} updateII={() => {setUpdateMode(!updateMode)}} deleteII={() => {setDeleteMode(!deleteMode)}} />
     </div>
   )

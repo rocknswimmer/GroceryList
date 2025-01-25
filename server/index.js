@@ -89,6 +89,16 @@ app.put('/UpdateGI', (req,res) =>{
   })
 })
 
+app.put('/UpdateII', (req,res) =>{
+  const {name,quantity,units,user,itemNum,location,expires} = req.body;
+  pool.query('update grocery_inventory set item = $1, quantity = $2, units = $3, item_location = $6, expires = $7  where user_num = $4 and id = $5 returning *',[name,Number(quantity), units, Number(user), Number(itemNum), location, expires], (err, data) => {
+    if(err){
+      console.log('error updating Inventory Item')
+    }
+    res.send(data)
+  })
+})
+
 
 //DELTE
 

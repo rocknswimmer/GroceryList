@@ -2,16 +2,16 @@ import React, {useState} from 'react';
 import axios from 'axios';
 
 const UpdateIIForm = ({item, close, update}) => {
-  const [nameIssue, setNameIssue] = useState(true);
-  const [quantityIssue, setQuantityIssue] = useState(true);
-  const [unitsIssue, setUnitsIssue] = useState(true);
-  const [locationIssue, setLocationIssue] = useState(true);
-  const [expiresIssue, setExpiresIssue] = useState(true);
-  const [name, setName] = useState('');
-  const [quantity, setQuantity] = useState('');
-  const [units, setUnits] = useState('');
-  const [location, setLocation] = useState('');
-  const [expires, setExpires] = useState('');
+  const [nameIssue, setNameIssue] = useState(false);
+  const [quantityIssue, setQuantityIssue] = useState(false);
+  const [unitsIssue, setUnitsIssue] = useState(false);
+  const [locationIssue, setLocationIssue] = useState(false);
+  const [expiresIssue, setExpiresIssue] = useState(false);
+  const [name, setName] = useState(item.item?item.item:'');
+  const [quantity, setQuantity] = useState(item.quantity?item.quantity+'':'');
+  const [units, setUnits] = useState(item.units?item.units:'');
+  const [location, setLocation] = useState(item.item_location?item.item_location:'');
+  const [expires, setExpires] = useState(item.expires?item.expires:'');
 
   const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   const allowed = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789., -_'.split('');
@@ -94,7 +94,7 @@ const UpdateIIForm = ({item, close, update}) => {
   const submitUpdateII =  (e) => {
     e.preventDefault();
     if(!nameIssue && !quantityIssue && !unitsIssue && !locationIssue && !expiresIssue){
-      axios.put('/UpdateII', {name:name, quantity:quantity, units:units, user:localStorage.user, location:location, expires:expires})
+      axios.put('/UpdateII', {name:name, quantity:quantity, units:units, user:localStorage.user, itemNum:item.id, location:location, expires:expires})
       .then((res) => {
         update();
         //console.log(res.data);
@@ -108,32 +108,36 @@ const UpdateIIForm = ({item, close, update}) => {
     }
   }
 
+  const dateParts=item.expires.split('/');
+  const defaultDate=dateParts[2]+'-'+(dateParts[0].length==2?dateParts[0]:'0'+dateParts[0])+'-'+(dateParts[1].length==2?dateParts[1]:'0'+dateParts[1]);
+  //console.log(item.expires, dateParts, defaultDate)
+
 
   return (
     <div>
       <h1>Update Inventory Item</h1>
       <form onSubmit={submitUpdateII}>
         <lable>Item Name</lable>
-        <input onChange={updateName} type="text" placeholder="Apples"></input>
+        <input onChange={updateName} type="text" defaultValue={item.item}></input>
         {nameIssue && name.length > 0 && <p>Name is wrong size or has unapproved characters</p>}
         <br/>
-        <lable>Quantity To Purchase</lable>
-        <input onChange={updateQuantity} type="text" placeholder="2"></input>
+        <lable>Quantity In Inventory</lable>
+        <input onChange={updateQuantity} type="text" defaultValue={item.quantity}></input>
         {quantityIssue && quantity.length > 0 && <p>Quantity is wrong size or is not digits</p>}
         <br/>
         <lable>Units</lable>
-        <input onChange={updateUnits} type="text" placeholder="Each"></input>
+        <input onChange={updateUnits} type="text" defaultValue={item.units}></input>
         {unitsIssue && units.length > 0 && <p>Units are the wrong size or have unapproved characters</p>}
         <br/>
         <lable>Location</lable>
-        <input onChange={updateLocation} type="text" placeholder="Pantry"></input>
+        <input onChange={updateLocation} type="text" defaultValue={item.item_location}></input>
         {unitsIssue && units.length > 0 && <p>Location is the wrong length or has unapproved characters</p>}
         <br/>
         <lable>Expires</lable>
-        <input onChange={updateExpires} type="date"></input>
+        <input onChange={updateExpires} type="date" defaultValue={defaultDate}></input>
         {unitsIssue && units.length > 0 && <p>Date input not recieved</p>}
         <br/>
-        <button type="submit">Add Item</button>
+        <button type="submit">Update Item</button>
       </form>
     </div>
   )

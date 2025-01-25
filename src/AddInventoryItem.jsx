@@ -117,7 +117,7 @@ const AddIIForm = ({close, update}) => {
         <input onChange={updateName} type="text" placeholder="Apples"></input>
         {nameIssue && name.length > 0 && <p>Name is wrong size or has unapproved characters</p>}
         <br/>
-        <lable>Quantity To Purchase</lable>
+        <lable>Quantity In Inventory</lable>
         <input onChange={updateQuantity} type="text" placeholder="2"></input>
         {quantityIssue && quantity.length > 0 && <p>Quantity is wrong size or is not digits</p>}
         <br/>
