@@ -5,18 +5,24 @@ import Modal from './modal.js';
 import axios from 'axios';
 
 
-const Inventory = () => {
+const Inventory = ({inventoryList, updateIL}) => {
 
-  // need function for each button and for each modal opened by a button if that is how the button will work
+  const [viewAdd, setViewAdd] = useState(false);
+  const [viewUpdate, setViewUpdate] = useState(false);
+  const [updateMode, setUpdateMode] = useState(false);
+  const [itemObj, setItemObj] = useState({})
+  const [viewDelete, setViewDelete] = useState(false);
+  const [deleteMode, setDeleteMode] = useState(false);
 
 
 
   return(
     <div>
-      {"1234".split('').map((item, i) => {
-        return <InventoryItem key={i}/>
+      {inventoryList.length > 0 && inventoryList.map((item, i) => {
+        return <InventoryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x)=>{setItemObj(x)}} updateII={() => {setViewUpdate(true)}} viewDelete={deleteMode} deleteII={() => {setViewDelete(true)}}/>
       })}
-      <IFooter />
+      {inventoryList.length == 0 && <p>No Items Currently On Your Inventory List</p>}
+      <IFooter addII={() => {setViewAdd(true)}} updateII={() => {setUpdateMode(!updateMode)}} deleteII={() => {setDeleteMode(!deleteMode)}} />
     </div>
   )
 }
