@@ -65,7 +65,7 @@ const AddGIForm = ({close, update}) => {
         close();
       })
       .catch((err) => {
-        console.log('error posting GI',err)
+        console.log('error posting GI')
       })
       //console.log(name,quantity, units);
 

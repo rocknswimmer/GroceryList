@@ -64,7 +64,7 @@ const UpdateGIForm = ({item, update, close}) => {
         close();
       })
       .catch((err) => {
-        console.log('error updating GI',err)
+        console.log('error updating GI')
       })
       //console.log(name,quantity, units);
 

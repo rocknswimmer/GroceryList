@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
-const AddIIForm = ({close, update}) => {
+const UpdateIIForm = ({item, close, update}) => {
   const [nameIssue, setNameIssue] = useState(true);
   const [quantityIssue, setQuantityIssue] = useState(true);
   const [unitsIssue, setUnitsIssue] = useState(true);
@@ -91,17 +91,17 @@ const AddIIForm = ({close, update}) => {
   }
 
 
-  const submitAddII =  (e) => {
+  const submitUpdateII =  (e) => {
     e.preventDefault();
     if(!nameIssue && !quantityIssue && !unitsIssue && !locationIssue && !expiresIssue){
-      axios.post('/addII', {name:name, quantity:quantity, units:units, user:localStorage.user, location:location, expires:expires})
+      axios.put('/UpdateII', {name:name, quantity:quantity, units:units, user:localStorage.user, location:location, expires:expires})
       .then((res) => {
         update();
         //console.log(res.data);
         close();
       })
       .catch((err) => {
-        console.log('error posting II')
+        console.log('error updating II')
       })
       //console.log(name,quantity, units);
 
@@ -111,8 +111,8 @@ const AddIIForm = ({close, update}) => {
 
   return (
     <div>
-      <h1>Add Item To Inventory</h1>
-      <form onSubmit={submitAddII}>
+      <h1>Update Inventory Item</h1>
+      <form onSubmit={submitUpdateII}>
         <lable>Item Name</lable>
         <input onChange={updateName} type="text" placeholder="Apples"></input>
         {nameIssue && name.length > 0 && <p>Name is wrong size or has unapproved characters</p>}
@@ -139,4 +139,4 @@ const AddIIForm = ({close, update}) => {
   )
 }
 
-export default AddIIForm;
+export default UpdateIIForm;
