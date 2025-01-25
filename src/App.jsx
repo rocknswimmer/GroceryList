@@ -89,7 +89,7 @@ function App() {
 
   const [inventoryList, setInventoryList] = useState([])
 
-  const getGL = () => {
+  const getIL = () => {
     axios.get(`/IL/${user}`)
     .then((res) => {
       //console.log(res.data)
@@ -112,6 +112,7 @@ function App() {
   useEffect(()=> {
     if(Number(user) >=0 ){
       getGL();
+      getIL();
     }
     //console.log("user effect")
   },[user])
@@ -122,7 +123,7 @@ function App() {
         <GlobalStyles />
         <Header theme={theme} themeToggler={themeToggler} viewInv={viewInv} viewGro={viewGro} login={login} logOut={logOut}/>
         {login && <h1>User {user}'s {invMode?'Inventory':'Grocery List'}</h1>}
-        {login && invMode && <Inventory inventoryList={inventoryList} updateIL={()=>{getIL()}}/>}
+        {login && invMode && <Inventory inventoryList={inventoryList} updateIL={()=>{getIL()}} />}
         {login && groMode && <Grocery groceryList={groceryList} updateGL={()=>{getGL()}} />}
         {!login &&
         <div>

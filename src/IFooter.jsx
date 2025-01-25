@@ -32,9 +32,9 @@ const IFooter = ({addII, updateII, deleteII}) => {
   return (
     <FooterContainer >
       <div>
-        <button onClick={addGI} >Add Item</button>
-        <button onClick={updateGI} >Update</button>
-        <button onClick={deleteGI}>Delete</button>
+        <button onClick={addII} >Add Item</button>
+        <button onClick={updateII} >Update</button>
+        <button onClick={deleteII}>Delete</button>
         <button>Add to List</button>
       </div>
 

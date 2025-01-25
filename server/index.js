@@ -43,6 +43,16 @@ app.post('/addGI', (req,res) => {
   })
 })
 
+app.post('/addII', (req,res) => {
+  const {name, quantity, units, user, location, expires} = req.body;
+  pool.query('insert into grocery_inventory (user_num, item, quantity,units, item_location, expires) values ($1,$2,$3,$4,$5,$6) returning *', [user, name, Number(quantity), units, location, expires], (err, data) => {
+    if (err) {
+      console.log('error adding Inventory Item', err);
+    }
+    res.send('Item added to inventory')
+  })
+})
+
 //GET
 
 app.get('/GL/:id', (req,res) => {
@@ -50,6 +60,16 @@ app.get('/GL/:id', (req,res) => {
   pool.query('select * from grocery_list where user_num = $1',[user],(err, data) => {
     if (err) {
       console.log('error getting Grocery List')
+    }
+    res.send(data)
+  })
+})
+
+app.get('/IL/:id', (req,res) => {
+  const user = req.params.id;
+  pool.query('select * from grocery_inventory where user_num = $1',[user],(err, data) => {
+    if (err) {
+      console.log('error getting Inventory List')
     }
     res.send(data)
   })
