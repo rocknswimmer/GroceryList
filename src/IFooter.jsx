@@ -12,7 +12,7 @@ const FooterContainer = styled.div`
   padding-left: 40px;
   background-color: #29b8ff;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   height: 80px;
   width: 100%;
   font-family: 'Bad Script', cursive;
