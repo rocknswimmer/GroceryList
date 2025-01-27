@@ -23,7 +23,7 @@ const FooterContainer = styled.div`
 `;
 
 
-const IFooter = ({addII, updateII, deleteII}) => {
+const IFooter = ({addII, updateII, deleteII, addToGL}) => {
 
 
 
@@ -35,7 +35,7 @@ const IFooter = ({addII, updateII, deleteII}) => {
         <button onClick={addII} >Add Item</button>
         <button onClick={updateII} >Update</button>
         <button onClick={deleteII}>Delete</button>
-        <button>Add to List</button>
+        <button onClick={addToGL}>Add to List</button>
       </div>
 
     </FooterContainer>

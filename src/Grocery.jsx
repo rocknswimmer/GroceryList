@@ -6,7 +6,7 @@ import AddGIForm from './AddGroceryItem.jsx';
 import UpdateGIForm from './UpdateGroceryItem.jsx';
 import DeleteGIForm from './DeleteGroceryItem.jsx';
 
-const Grocery = ({groceryList, updateGL}) => {
+const Grocery = ({groceryList, updateGL, updateIL}) => {
 
   const [viewAdd, setViewAdd] = useState(false);
   const [viewUpdate, setViewUpdate] = useState(false);

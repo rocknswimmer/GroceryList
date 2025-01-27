@@ -6,10 +6,10 @@ import axios from 'axios';
 import AddIIForm from './AddInventoryItem.jsx';
 import UpdateIIForm from './UpdateInventoryItem.jsx';
 import DeleteIIForm from './DeleteInventoryItem.jsx';
-import AddGIForm from './AddGroceryItem.jsx';
+import AddToGLForm from './AddToGrocery.jsx';
 
 
-const Inventory = ({inventoryList, updateIL}) => {
+const Inventory = ({inventoryList, updateIL, updateGL}) => {
 
   const [viewAdd, setViewAdd] = useState(false);
   const [viewUpdate, setViewUpdate] = useState(false);
@@ -17,13 +17,16 @@ const Inventory = ({inventoryList, updateIL}) => {
   const [itemObj, setItemObj] = useState({})
   const [viewDelete, setViewDelete] = useState(false);
   const [deleteMode, setDeleteMode] = useState(false);
+  const [viewAddToGL, setViewAddToGL] = useState(false);
+  const [AddToGLMode, setAddToGLMode] = useState(false);
+
 
 
 
   return(
     <div>
       {inventoryList.length > 0 && inventoryList.map((item, i) => {
-        return <InventoryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x)=>{setItemObj(x)}} updateII={() => {setViewUpdate(true)}} viewDelete={deleteMode} deleteII={() => {setViewDelete(true)}}/>
+        return <InventoryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x)=>{setItemObj(x)}} updateII={() => {setViewUpdate(true)}} viewDelete={deleteMode} deleteII={() => {setViewDelete(true)}} viewAddToGL={AddToGLMode} addToGL={()=>{setViewAddToGL(true)}}/>
       })}
 
       {inventoryList.length == 0 && <p>No Items Currently On Your Inventory List</p>}
@@ -34,6 +37,8 @@ const Inventory = ({inventoryList, updateIL}) => {
 
       {viewDelete && <Modal close={()=>{setViewDelete(false)}} content={<DeleteIIForm item={itemObj}  close={()=>{setViewDelete(false)}} update={()=>{updateIL()}}/>}  />}
 
+      {viewAddToGL && <Modal close={() =>{setViewAddToGL(false)}} content={<AddToGLForm item={itemObj} close={() =>{setViewAddToGL(false)}} update={() =>{updateGL()}}/>} />}
+
       {/* recieve thoughts
       import addGIForm
       plug up like update and delete with button saying add to grocery list or something
@@ -42,7 +47,7 @@ const Inventory = ({inventoryList, updateIL}) => {
 
       */}
 
-      <IFooter addII={() => {setViewAdd(true)}} updateII={() => {setUpdateMode(!updateMode)}} deleteII={() => {setDeleteMode(!deleteMode)}} />
+      <IFooter addII={() => {setViewAdd(true)}} updateII={() => {setUpdateMode(!updateMode)}} deleteII={() => {setDeleteMode(!deleteMode)}} addToGL={() => {setAddToGLMode(!AddToGLMode)}} />
     </div>
   )
 }

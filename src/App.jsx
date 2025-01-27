@@ -123,8 +123,8 @@ function App() {
         <GlobalStyles />
         <Header theme={theme} themeToggler={themeToggler} viewInv={viewInv} viewGro={viewGro} login={login} logOut={logOut}/>
         {login && <h1>User {user}'s {invMode?'Inventory':'Grocery List'}</h1>}
-        {login && invMode && <Inventory inventoryList={inventoryList} updateIL={()=>{getIL()}} />}
-        {login && groMode && <Grocery groceryList={groceryList} updateGL={()=>{getGL()}} />}
+        {login && invMode && <Inventory inventoryList={inventoryList} updateIL={()=>{getIL()}} updateGL={()=>{getGL()}} />}
+        {login && groMode && <Grocery groceryList={groceryList} updateGL={()=>{getGL()}} updateIL={()=>{getIL()}}/>}
         {!login &&
         <div>
           <h1>Input a user number or sign in as user 100</h1>
