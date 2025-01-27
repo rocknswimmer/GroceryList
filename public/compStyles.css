@@ -78,6 +78,7 @@ input:checked + .slider:before {
 /* modal styles */
 .modal {
   margin: auto;
+
 }
 
 .modal-pop {
@@ -85,7 +86,7 @@ input:checked + .slider:before {
   border: 2px solid #aaa;
   color: #D5DBE7;
   border-radius: 5px;
-  z-index: 2;
+  z-index: 3;
   margin: auto;
   overflow-y: scroll;
   overflow: scroll;
