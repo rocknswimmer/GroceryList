@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
-const Receive = ({item, close, update, deleteGI}) => {
+const Receive = ({item, close, update}) => {
   const [nameIssue, setNameIssue] = useState(false);
   const [quantityIssue, setQuantityIssue] = useState(false);
   const [unitsIssue, setUnitsIssue] = useState(false);
@@ -93,16 +93,22 @@ const Receive = ({item, close, update, deleteGI}) => {
 
   const submitAddII =  (e) => {
     e.preventDefault();
-    if(!nameIssue && !quantityIssue && !unitsIssue && !locationIssue && !expiresIssue){
-      axios.post('/addII', {name:name, quantity:quantity, units:units, user:localStorage.user, location:location, expires:expires})
-      .then((res) => {
-        update();
-        //figure out delete !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        close();
-      })
-      .catch((err) => {
-        console.log('error receiving')
-      })
+    if (!nameIssue && !quantityIssue && !unitsIssue && !locationIssue && !expiresIssue) {
+      axios.post('/addII', { name: name, quantity: quantity, units: units, user: localStorage.user, location: location, expires: expires })
+        .then((res) => {
+          axios.delete(`/deleteGI/${item.id}`)
+            .then((res) => {
+              update();
+              close();
+            })
+            .catch((err) => {
+              console.log('error deleting received grocery item')
+              // console.log(err)
+            })
+        })
+        .catch((err) => {
+          console.log('error receiving')
+        })
       //console.log(name,quantity, units);
 
     }

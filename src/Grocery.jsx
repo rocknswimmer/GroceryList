@@ -34,7 +34,7 @@ const Grocery = ({groceryList, updateGL, updateIL}) => {
 
       {viewDelete && <Modal close={()=>{setViewDelete(false)}} content={<DeleteGIForm item={itemObj}  close={()=>{setViewDelete(false)}} update={()=>{updateGL()}}/>}  />}
 
-      {viewReceive && <Modal close={()=>{setViewReceive(false)}} content={<Receive item={itemObj}  close={()=>{setViewReceive(false)}} update={()=>{updateGL();updateIL()}}/>} deleteGI={false}  />}
+      {viewReceive && <Modal close={()=>{setViewReceive(false)}} content={<Receive item={itemObj}  close={()=>{setViewReceive(false)}} update={()=>{updateGL();updateIL()}}/>}  />}
 
       <Footer addGI={() => {setViewAdd(true)}} updateGI={() => {setUpdateMode(!updateMode)}} deleteGI={() => {setDeleteMode(!deleteMode)}} receive={()=>{setReceiveMode(!receiveMode)}}/>
     </div>
