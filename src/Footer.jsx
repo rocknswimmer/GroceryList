@@ -23,7 +23,7 @@ const FooterContainer = styled.div`
 `;
 
 
-const Footer = ({addGI, updateGI, deleteGI}) => {
+const Footer = ({addGI, updateGI, deleteGI, receive}) => {
 
 
 
@@ -35,7 +35,7 @@ const Footer = ({addGI, updateGI, deleteGI}) => {
         <button onClick={addGI} >Add</button>
         <button onClick={updateGI}>Update</button>
         <button onClick={deleteGI}>Delete</button>
-        <button>Receive</button>
+        <button onClick={receive}>Receive</button>
       </div>
 
     </FooterContainer>

@@ -5,6 +5,7 @@ import Modal from './modal.js';
 import AddGIForm from './AddGroceryItem.jsx';
 import UpdateGIForm from './UpdateGroceryItem.jsx';
 import DeleteGIForm from './DeleteGroceryItem.jsx';
+import Receive from './Receive.jsx';
 
 const Grocery = ({groceryList, updateGL, updateIL}) => {
 
@@ -14,6 +15,8 @@ const Grocery = ({groceryList, updateGL, updateIL}) => {
   const [itemObj, setItemObj] = useState({})
   const [viewDelete, setViewDelete] = useState(false);
   const [deleteMode, setDeleteMode] = useState(false);
+  const [viewReceive, setViewReceive] = useState(false);
+  const [receiveMode, setReceiveMode] = useState(false);
 
 
 
@@ -21,7 +24,7 @@ const Grocery = ({groceryList, updateGL, updateIL}) => {
   return(
     <div>
       {groceryList.length > 0 && groceryList.map((item, i) => {
-        return <GroceryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x)=>{setItemObj(x)}} updateGI={() => {setViewUpdate(true)}} viewDelete={deleteMode} deleteGI={() => {setViewDelete(true)}}/>
+        return <GroceryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x)=>{setItemObj(x)}} updateGI={() => {setViewUpdate(true)}} viewDelete={deleteMode} deleteGI={() => {setViewDelete(true)}} viewReceive={receiveMode} receive={()=>{setViewReceive(true)}}/>
       })}
       {groceryList.length == 0 && <p>No Items Currently On Your Grocery List</p>}
       {viewAdd && <Modal close={()=>{setViewAdd(false)}} content={<AddGIForm close={()=>{setViewAdd(false)}} update={()=>{updateGL()}} />}/>}
@@ -31,7 +34,9 @@ const Grocery = ({groceryList, updateGL, updateIL}) => {
 
       {viewDelete && <Modal close={()=>{setViewDelete(false)}} content={<DeleteGIForm item={itemObj}  close={()=>{setViewDelete(false)}} update={()=>{updateGL()}}/>}  />}
 
-      <Footer addGI={() => {setViewAdd(true)}} updateGI={() => {setUpdateMode(!updateMode)}} deleteGI={() => {setDeleteMode(!deleteMode)}}/>
+      {viewReceive && <Modal close={()=>{setViewReceive(false)}} content={<Receive item={itemObj}  close={()=>{setViewReceive(false)}} update={()=>{updateGL();updateIL()}}/>} deleteGI={false}  />}
+
+      <Footer addGI={() => {setViewAdd(true)}} updateGI={() => {setUpdateMode(!updateMode)}} deleteGI={() => {setDeleteMode(!deleteMode)}} receive={()=>{setReceiveMode(!receiveMode)}}/>
     </div>
 )
 }
