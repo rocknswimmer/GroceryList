@@ -119,23 +119,23 @@ const UpdateIIForm = ({item, close, update}) => {
       <form onSubmit={submitUpdateII}>
         <lable>Item Name</lable>
         <input onChange={updateName} type="text" defaultValue={item.item}></input>
-        {nameIssue && name.length > 0 && <p>Name is wrong size or has unapproved characters</p>}
+        {nameIssue && name.length > 0 && <p className="falert">Name is wrong size or has unapproved characters</p>}
         <br/>
         <lable>Quantity In Inventory</lable>
         <input onChange={updateQuantity} type="text" defaultValue={item.quantity}></input>
-        {quantityIssue && quantity.length > 0 && <p>Quantity is wrong size or is not digits</p>}
+        {quantityIssue && quantity.length > 0 && <p className="falert">Quantity is wrong size or is not digits</p>}
         <br/>
         <lable>Units</lable>
         <input onChange={updateUnits} type="text" defaultValue={item.units}></input>
-        {unitsIssue && units.length > 0 && <p>Units are the wrong size or have unapproved characters</p>}
+        {unitsIssue && units.length > 0 && <p className="falert">Units are the wrong size or have unapproved characters</p>}
         <br/>
         <lable>Location</lable>
         <input onChange={updateLocation} type="text" defaultValue={item.item_location}></input>
-        {unitsIssue && units.length > 0 && <p>Location is the wrong length or has unapproved characters</p>}
+        {unitsIssue && units.length > 0 && <p className="falert">Location is the wrong length or has unapproved characters</p>}
         <br/>
         <lable>Expires</lable>
         <input onChange={updateExpires} type="date" defaultValue={defaultDate}></input>
-        {unitsIssue && units.length > 0 && <p>Date input not recieved</p>}
+        {unitsIssue && units.length > 0 && <p className="falert">Date input not recieved</p>}
         <br/>
         <button type="submit">Update Item</button>
       </form>

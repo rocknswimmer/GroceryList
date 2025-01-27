@@ -79,15 +79,15 @@ const AddGIForm = ({close, update}) => {
       <form onSubmit={submitAddGI}>
         <lable>Item Name</lable>
         <input onChange={updateName} type="text" placeholder="Apples"></input>
-        {nameIssue && name.length > 0 && <p>Name is wrong size or has unapproved characters</p>}
+        {nameIssue && name.length > 0 && <p className="falert">Name is wrong size or has unapproved characters</p>}
         <br/>
         <lable>Quantity To Purchase</lable>
         <input onChange={updateQuantity} type="text" placeholder="2"></input>
-        {quantityIssue && quantity.length > 0 && <p>Quantity is wrong size or is not digits</p>}
+        {quantityIssue && quantity.length > 0 && <p className="falert">Quantity is wrong size or is not digits</p>}
         <br/>
         <lable>Units</lable>
         <input onChange={updateUnits} type="text" placeholder="Each"></input>
-        {unitsIssue && units.length > 0 && <p>Units are the wrong size or have unapproved characters</p>}
+        {unitsIssue && units.length > 0 && <p className="falert">Units are the wrong size or have unapproved characters</p>}
         <br/>
         <button type="submit">Add Item</button>
       </form>

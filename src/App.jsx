@@ -133,7 +133,7 @@ function App() {
           <button onClick={logIn}>Login to a chosen user</button>
           <button onClick={logIn100}>Login as user 100</button>
           </div>
-          {issue && <p>Input wrong size or not digits</p>}
+          {issue && <p className="falert">Input wrong size or not digits</p>}
         </div>}
       </>
     </ThemeProvider>
