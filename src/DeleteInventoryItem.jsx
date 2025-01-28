@@ -21,7 +21,7 @@ const DeleteIIForm = ({item, update, close}) => {
     <div>
       <h1>Are You Sure You Want To Delete This Item?</h1>
       <h2>{item.item}</h2>
-      <button onClick={deleteII}>Delete Item</button>
+      <button onClick={deleteII} className="deletee">Delete Item</button>
     </div>
   )
 }

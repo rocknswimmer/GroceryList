@@ -131,6 +131,12 @@ button {
   color: rgb(242, 255, 0);
 }
 
+/* its spelled alot like delete, but aviods possible keywords */
+.deletee {
+  background: red;
+  color:black;
+}
+
 
 
 /**/
