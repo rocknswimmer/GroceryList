@@ -1,2 +1,4 @@
 # Grocery List
-site built to receive participant interest for the even/off years
+App build to allow users to track inventory of items and a grocery list for items needed
+
+[Deployed Demo](http://44.197.151.146:3023)
