@@ -57,7 +57,7 @@ app.post('/addII', (req,res) => {
 
 app.get('/GL/:id', (req,res) => {
   const user = req.params.id;
-  pool.query('select * from grocery_list where user_num = $1',[user],(err, data) => {
+  pool.query('select * from grocery_list where user_num = $1 order by upper(item)',[user],(err, data) => {
     if (err) {
       console.log('error getting Grocery List')
     }
@@ -67,7 +67,7 @@ app.get('/GL/:id', (req,res) => {
 
 app.get('/IL/:id', (req,res) => {
   const user = req.params.id;
-  pool.query('select * from grocery_inventory where user_num = $1',[user],(err, data) => {
+  pool.query('select * from grocery_inventory where user_num = $1 order by upper(item_location)',[user],(err, data) => {
     if (err) {
       console.log('error getting Inventory List')
     }
