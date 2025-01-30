@@ -39,14 +39,6 @@ const Inventory = ({inventoryList, updateIL, updateGL}) => {
 
       {viewAddToGL && <Modal close={() =>{setViewAddToGL(false)}} content={<AddToGLForm item={itemObj} close={() =>{setViewAddToGL(false)}} update={() =>{updateGL()}}/>} />}
 
-      {/* recieve thoughts
-      import addGIForm
-      plug up like update and delete with button saying add to grocery list or something
-      after adding DO NOT deleteII ************** delete should only be after use/when user chooses
-      will be different for recieve GI
-
-      */}
-
       <IFooter addII={() => {setViewAdd(true)}} updateII={() => {setUpdateMode(!updateMode);setDeleteMode(false);setAddToGLMode(false)}} deleteII={() => {setDeleteMode(!deleteMode);setUpdateMode(false);setAddToGLMode(false)}} addToGL={() => {setAddToGLMode(!AddToGLMode);setDeleteMode(false);setUpdateMode(false)}} />
     </div>
   )
