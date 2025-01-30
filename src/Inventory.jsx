@@ -47,7 +47,7 @@ const Inventory = ({inventoryList, updateIL, updateGL}) => {
 
       */}
 
-      <IFooter addII={() => {setViewAdd(true)}} updateII={() => {setUpdateMode(!updateMode)}} deleteII={() => {setDeleteMode(!deleteMode)}} addToGL={() => {setAddToGLMode(!AddToGLMode)}} />
+      <IFooter addII={() => {setViewAdd(true)}} updateII={() => {setUpdateMode(!updateMode);setDeleteMode(false);setAddToGLMode(false)}} deleteII={() => {setDeleteMode(!deleteMode);setUpdateMode(false);setAddToGLMode(false)}} addToGL={() => {setAddToGLMode(!AddToGLMode);setDeleteMode(false);setUpdateMode(false)}} />
     </div>
   )
 }
