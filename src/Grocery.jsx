@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import GroceryItem from './GroceryItem.jsx';
 import Footer from './Footer.jsx';
 import Modal from './modal.js';
@@ -17,19 +17,69 @@ const Grocery = ({groceryList, updateGL, updateIL}) => {
   const [deleteMode, setDeleteMode] = useState(false);
   const [viewReceive, setViewReceive] = useState(false);
   const [receiveMode, setReceiveMode] = useState(false);
+
   const [searching, setSearching] = useState(false);
   const [searched, setSearched] = useState('');
   const [filtered, setFiltered] = useState([]);
+  const [searchIssue, setSearchIssue] = useState(false);
+
+
+  const interpretSearch = (e) => {
+    setSearched(e.target.value)
+  }
+
+  const searchedListMaker = () => {
+    let searchedHolder = []
+    groceryList.forEach((item) => {
+      if(item.item.toUpperCase().includes(searched.toUpperCase()) || item.units.toUpperCase().includes(searched.toUpperCase())) {
+        searchedHolder.push(item)
+      }
+    })
+
+    setFiltered(searchedHolder)
+  }
+
+  useEffect(() => {
+    if (searched.length !== 2) {
+      if (searched.length === 3 && !searching) {
+        setSearching(true);
+      }
+      if (searched.length >= 3) {
+        searchedListMaker();
+      }
+    } else {
+      setSearching(false);
+    }
+  }, [((searched.length > 2) && (searched))])
 
 
 
 
   return(
     <div>
-      {groceryList.length > 0 && groceryList.map((item, i) => {
-        return <GroceryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x)=>{setItemObj(x)}} updateGI={() => {setViewUpdate(true)}} viewDelete={deleteMode} deleteGI={() => {setViewDelete(true)}} viewReceive={receiveMode} receive={()=>{setViewReceive(true)}}/>
-      })}
-      {groceryList.length == 0 && <p>No Items Currently On Your Grocery List</p>}
+      <input name="Searchbar" type='text' placeholder='Search Your Grocery List' onChange={interpretSearch}></input>
+
+      {groceryList.length > 0 && <div>
+
+        {(!searching || (filtered.length > 0 &&  searching)) && <GroceryItem key={0} item={{item:"Item", quantity:"Qty", units:"Units", item_location:"Location", expires:"Expires"}} viewUpdate={false} updateItemObj={(x) => {console.log('should not have button') }} updateGI={() => { console.log('should not have button') }} viewDelete={false} deleteGI={() => { console.log('should not have button') }} viewReceive={false} receive={() => { console.log('should not have button') }} />}
+
+
+        {!searching && groceryList.map((item, i) => {
+          return <GroceryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x) => { setItemObj(x) }} updateGI={() => { setViewUpdate(true) }} viewDelete={deleteMode} deleteGI={() => { setViewDelete(true) }} viewReceive={receiveMode} receive={() => { setViewReceive(true) }} />
+        })}
+
+        {searching && filtered.map((item, i) => {
+          return <GroceryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x) => { setItemObj(x) }} updateGI={() => { setViewUpdate(true) }} viewDelete={deleteMode} deleteGI={() => { setViewDelete(true) }} viewReceive={receiveMode} receive={() => { setViewReceive(true) }} />
+        })}
+
+
+      </div>}
+
+      {groceryList.length == 0 && !searching && <p>No Items Currently On Your Grocery List</p>}
+      {filtered.length == 0 &&  searching && <p>No Items Currently Match Your Search</p>}
+
+
+
       {viewAdd && <Modal close={()=>{setViewAdd(false)}} content={<AddGIForm close={()=>{setViewAdd(false)}} update={()=>{updateGL()}} />}/>}
 
 
