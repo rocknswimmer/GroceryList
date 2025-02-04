@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import InventoryItem from './InventoryItem.jsx';
 import IFooter from './IFooter.jsx';
 import Modal from './modal.js';
@@ -20,16 +20,63 @@ const Inventory = ({inventoryList, updateIL, updateGL}) => {
   const [viewAddToGL, setViewAddToGL] = useState(false);
   const [AddToGLMode, setAddToGLMode] = useState(false);
 
+  const [searching, setSearching] = useState(false);
+  const [searched, setSearched] = useState('');
+  const [filtered, setFiltered] = useState([]);
+  const [searchIssue, setSearchIssue] = useState(false);
+
+
+  const interpretSearch = (e) => {
+    setSearched(e.target.value)
+  }
+
+  const searchedListMaker = () => {
+    let searchedHolder = []
+    inventoryList.forEach((item) => {
+      if(item.item.toUpperCase().includes(searched.toUpperCase()) || item.units.toUpperCase().includes(searched.toUpperCase()) || item.item_location.toUpperCase().includes(searched.toUpperCase())) {
+        searchedHolder.push(item)
+      }
+    })
+
+    setFiltered(searchedHolder)
+  }
+
+  useEffect(() => {
+    if (searched.length !== 2) {
+      if (searched.length === 3 && !searching) {
+        setSearching(true);
+      }
+      if (searched.length >= 3) {
+        searchedListMaker();
+      }
+    } else {
+      setSearching(false);
+    }
+  }, [((searched.length > 2) && (searched))])
+
 
 
 
   return(
     <div>
-      {inventoryList.length > 0 && inventoryList.map((item, i) => {
-        return <InventoryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x)=>{setItemObj(x)}} updateII={() => {setViewUpdate(true)}} viewDelete={deleteMode} deleteII={() => {setViewDelete(true)}} viewAddToGL={AddToGLMode} addToGL={()=>{setViewAddToGL(true)}}/>
-      })}
+      <input name="Searchbar" type='text' placeholder='Search Your Inventory' onChange={interpretSearch}></input>
 
-      {inventoryList.length == 0 && <p>No Items Currently On Your Inventory List</p>}
+
+      {inventoryList.length > 0 && <div>
+
+        {(!searching || (filtered.length > 0 &&  searching)) && <InventoryItem key={0} item={{item:"Item", quantity:"Qty", units:"Units", item_location:"Location", expires:"Expires"}} viewUpdate={false} updateItemObj={() => {console.log('should not have button')}} updateII={() => { console.log('should not have button') }} viewDelete={false} deleteII={() => { console.log('should not have button') }} viewAddToGL={false} addToGL={() => { console.log('should not have button')}}  />}
+
+        {!searching && inventoryList.map((item, i) => {
+          return <InventoryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x) => { setItemObj(x) }} updateII={() => { setViewUpdate(true) }} viewDelete={deleteMode} deleteII={() => { setViewDelete(true) }} viewAddToGL={AddToGLMode} addToGL={() => { setViewAddToGL(true) }} />
+        })}
+
+        {searching && filtered.map((item, i) => {
+          return <InventoryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x) => { setItemObj(x) }} updateII={() => { setViewUpdate(true) }} viewDelete={deleteMode} deleteII={() => { setViewDelete(true) }} viewAddToGL={AddToGLMode} addToGL={() => { setViewAddToGL(true) }} />
+        })}
+      </div>}
+
+      {inventoryList.length == 0 &&  !searching && <p>No Items Currently On Your Inventory List</p>}
+      {filtered.length == 0 &&  searching && <p>No Items Currently Match Your Search</p>}
 
       {viewAdd && <Modal close={()=>{setViewAdd(false)}} content={<AddIIForm close={()=>{setViewAdd(false)}} update={()=>{updateIL()}} />}/>}
 

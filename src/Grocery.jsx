@@ -17,6 +17,9 @@ const Grocery = ({groceryList, updateGL, updateIL}) => {
   const [deleteMode, setDeleteMode] = useState(false);
   const [viewReceive, setViewReceive] = useState(false);
   const [receiveMode, setReceiveMode] = useState(false);
+  const [searching, setSearching] = useState(false);
+  const [searched, setSearched] = useState('');
+  const [filtered, setFiltered] = useState([]);
 
 
 
