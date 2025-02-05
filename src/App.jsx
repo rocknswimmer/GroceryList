@@ -135,6 +135,10 @@ function App() {
           </div>
           {issue && <p className="falert">Input wrong size or not digits</p>}
         </div>}
+        <p className="cone">#cc0023</p>
+        <p className="ctwo">#fff</p>
+        <p className="cthree">#000</p>
+        <p className="cfour">#585858</p>
       </>
     </ThemeProvider>
   )

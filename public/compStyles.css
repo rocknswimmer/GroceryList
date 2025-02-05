@@ -33,13 +33,13 @@ background-color: #1F2224;
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: white;
+  background-color: #fff;
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 input:checked + .slider {
-    background-color: #D5DBE7;
+    background-color: #585858;
 }
 
 input:focus + .slider {
@@ -136,6 +136,35 @@ button {
   background: red;
   color:black;
 }
+
+
+/*color palet*/
+
+.cone {
+  background: #cc0023;
+  color: pink;
+  border: 2px solid greenyellow;
+
+}
+
+.ctwo {
+  background: #fff;
+  color: pink;
+  border: 2px solid greenyellow;
+}
+
+.cthree {
+  background: #000;
+  color: pink;
+  border: 2px solid greenyellow;
+}
+
+.cfour {
+  background: #585858;
+  color: pink;
+  border: 2px solid greenyellow;
+}
+
 
 
 

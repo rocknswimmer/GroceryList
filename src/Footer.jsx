@@ -10,15 +10,15 @@ const FooterContainer = styled.div`
   z-index: 2;
   padding-right: 10px;
   padding-left: 40px;
-  background-color: #29b8ff;
+  background-color: #cc0023;
   display: flex;
   justify-content: center;
   height: 80px;
   width: 100%;
   font-family: 'Bad Script', cursive;
-  border-top: solid 4px white;
+  border-top: solid 4px #585858;
   padding-left: 10px;
-  color: white;
+  color: #fff;
 
 `;
 
