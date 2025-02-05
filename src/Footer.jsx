@@ -31,7 +31,7 @@ const Footer = ({addGI, updateGI, deleteGI, receive}) => {
 
   return (
     <FooterContainer >
-      <div >
+      <div className='nav' >
         <button onClick={addGI} >Add</button>
         <button onClick={updateGI}>Update</button>
         <button onClick={deleteGI}>Delete</button>

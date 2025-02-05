@@ -122,9 +122,8 @@ function App() {
       <>
         <GlobalStyles />
         <Header theme={theme} themeToggler={themeToggler} viewInv={viewInv} viewGro={viewGro} login={login} logOut={logOut}/>
-        {login && <h1>User {user}'s {invMode?'Inventory':'Grocery List'}</h1>}
-        {login && invMode && <Inventory inventoryList={inventoryList} updateIL={()=>{getIL()}} updateGL={()=>{getGL()}} />}
-        {login && groMode && <Grocery groceryList={groceryList} updateGL={()=>{getGL()}} updateIL={()=>{getIL()}}/>}
+        {login && invMode && <Inventory inventoryList={inventoryList} updateIL={()=>{getIL()}} updateGL={()=>{getGL()}} user={user} />}
+        {login && groMode && <Grocery groceryList={groceryList} updateGL={()=>{getGL()}} updateIL={()=>{getIL()}} user={user}/>}
         {!login &&
         <div>
           <h1>Input a user number or sign in as user 100</h1>
@@ -135,10 +134,10 @@ function App() {
           </div>
           {issue && <p className="falert">Input wrong size or not digits</p>}
         </div>}
-        <p className="cone">#cc0023</p>
+        {/* <p className="cone">#cc0023</p>
         <p className="ctwo">#fff</p>
         <p className="cthree">#000</p>
-        <p className="cfour">#585858</p>
+        <p className="cfour">#585858</p> */}
       </>
     </ThemeProvider>
   )

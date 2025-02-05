@@ -31,7 +31,7 @@ const Header = ({ theme, themeToggler,viewInv, viewGro, login, logOut}) => {
 
   return (
     <HeaderContainer data-testid='header'>
-      <h1 className="version">Grocery List</h1>
+      <h1 className="version">Groceries</h1>
       {login && <div className="nav">
       <button onClick={viewInv}>Inventory</button>
       <button onClick={viewGro}>Grocery List</button>

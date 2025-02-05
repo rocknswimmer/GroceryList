@@ -31,7 +31,7 @@ const IFooter = ({addII, updateII, deleteII, addToGL}) => {
 
   return (
     <FooterContainer >
-      <div>
+      <div className='nav'>
         <button onClick={addII} >Add Item</button>
         <button onClick={updateII} >Update</button>
         <button onClick={deleteII}>Delete</button>

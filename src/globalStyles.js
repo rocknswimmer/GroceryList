@@ -9,6 +9,6 @@ export const GlobalStyles = createGlobalStyle`
     display: flex;
     justify-content: center;
     position: relative;
-    top: 80px;
+    top: 60px;
   }
   `;
