@@ -143,8 +143,8 @@ button {
 
 /* its spelled alot like delete, but aviods possible keywords */
 .deletee {
-  background: red;
-  color:black;
+  background: #cc0023;
+  color:#FFF;
 }
 
 
@@ -180,6 +180,12 @@ button {
 
 .top {
   border-top: 2px solid #cccccc;
+}
+
+.hide {
+  background-color: transparent;
+  color: transparent;
+  border: 1px solid transparent;
 }
 /*color palet*/
 

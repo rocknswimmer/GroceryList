@@ -63,7 +63,7 @@ const Grocery = ({groceryList, updateGL, updateIL, user}) => {
 
         {groceryList.length > 0 && <div>
 
-          {(!searching || (filtered.length > 0 && searching)) && <GroceryItem key={0} item={{ item: "Item", quantity: "Qty", units: "Units", item_location: "Location", expires: "Expires" }} viewUpdate={false} updateItemObj={(x) => { console.log('should not have button') }} updateGI={() => { console.log('should not have button') }} viewDelete={false} deleteGI={() => { console.log('should not have button') }} viewReceive={false} receive={() => { console.log('should not have button') }} ind={-1}/>}
+          {(!searching || (filtered.length > 0 && searching)) && <GroceryItem key={0} item={{ item: "Item", quantity: "Qty", units: "Units", item_location: "Location", expires: "Expires" }} viewUpdate={updateMode} updateItemObj={(x) => { console.log('should not have button') }} updateGI={() => { console.log('should not have button') }} viewDelete={deleteMode} deleteGI={() => { console.log('should not have button') }} viewReceive={receiveMode} receive={() => { console.log('should not have button') }} ind={-1}/>}
 
 
           {!searching && groceryList.map((item, i) => {
