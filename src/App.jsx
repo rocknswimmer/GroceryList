@@ -122,8 +122,8 @@ function App() {
       <>
         <GlobalStyles />
         <Header theme={theme} themeToggler={themeToggler} viewInv={viewInv} viewGro={viewGro} login={login} logOut={logOut}/>
-        {login && invMode && <Inventory inventoryList={inventoryList} updateIL={()=>{getIL()}} updateGL={()=>{getGL()}} user={user} />}
-        {login && groMode && <Grocery groceryList={groceryList} updateGL={()=>{getGL()}} updateIL={()=>{getIL()}} user={user}/>}
+        {login && invMode && <Inventory inventoryList={inventoryList} updateIL={()=>{getIL()}} updateGL={()=>{getGL()}} user={user} theme={theme} />}
+        {login && groMode && <Grocery groceryList={groceryList} updateGL={()=>{getGL()}} updateIL={()=>{getIL()}} user={user} theme={theme}/>}
         {!login &&
         <div>
           <h1>Input a user number or sign in as user 100</h1>
