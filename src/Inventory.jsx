@@ -66,14 +66,14 @@ const Inventory = ({inventoryList, updateIL, updateGL, user}) => {
 
         {inventoryList.length > 0 && <div>
 
-          {(!searching || (filtered.length > 0 && searching)) && <InventoryItem key={0} item={{ item: "Item", quantity: "Qty", units: "Units", item_location: "Location", expires: "Expires" }} viewUpdate={false} updateItemObj={() => { console.log('should not have button') }} updateII={() => { console.log('should not have button') }} viewDelete={false} deleteII={() => { console.log('should not have button') }} viewAddToGL={false} addToGL={() => { console.log('should not have button') }} />}
+          {(!searching || (filtered.length > 0 && searching)) && <InventoryItem key={0} item={{ item: "Item", quantity: "Qty", units: "Units", item_location: "Location", expires: "Expires" }} viewUpdate={false} updateItemObj={() => { console.log('should not have button') }} updateII={() => { console.log('should not have button') }} viewDelete={false} deleteII={() => { console.log('should not have button') }} viewAddToGL={false} addToGL={() => { console.log('should not have button') }} ind={1} />}
 
           {!searching && inventoryList.map((item, i) => {
-            return <InventoryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x) => { setItemObj(x) }} updateII={() => { setViewUpdate(true) }} viewDelete={deleteMode} deleteII={() => { setViewDelete(true) }} viewAddToGL={AddToGLMode} addToGL={() => { setViewAddToGL(true) }} />
+            return <InventoryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x) => { setItemObj(x) }} updateII={() => { setViewUpdate(true) }} viewDelete={deleteMode} deleteII={() => { setViewDelete(true) }} viewAddToGL={AddToGLMode} addToGL={() => { setViewAddToGL(true) }} ind={i} />
           })}
 
           {searching && filtered.map((item, i) => {
-            return <InventoryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x) => { setItemObj(x) }} updateII={() => { setViewUpdate(true) }} viewDelete={deleteMode} deleteII={() => { setViewDelete(true) }} viewAddToGL={AddToGLMode} addToGL={() => { setViewAddToGL(true) }} />
+            return <InventoryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x) => { setItemObj(x) }} updateII={() => { setViewUpdate(true) }} viewDelete={deleteMode} deleteII={() => { setViewDelete(true) }} viewAddToGL={AddToGLMode} addToGL={() => { setViewAddToGL(true) }} ind={i} />
           })}
         </div>}
 

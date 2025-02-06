@@ -177,6 +177,10 @@ button {
 }
 /*color palet*/
 
+.odd {
+  background-color: #585858;
+}
+
 .cone {
   background: #cc0023;
   color: pink;

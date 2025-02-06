@@ -63,15 +63,15 @@ const Grocery = ({groceryList, updateGL, updateIL, user}) => {
 
         {groceryList.length > 0 && <div>
 
-          {(!searching || (filtered.length > 0 && searching)) && <GroceryItem key={0} item={{ item: "Item", quantity: "Qty", units: "Units", item_location: "Location", expires: "Expires" }} viewUpdate={false} updateItemObj={(x) => { console.log('should not have button') }} updateGI={() => { console.log('should not have button') }} viewDelete={false} deleteGI={() => { console.log('should not have button') }} viewReceive={false} receive={() => { console.log('should not have button') }} />}
+          {(!searching || (filtered.length > 0 && searching)) && <GroceryItem key={0} item={{ item: "Item", quantity: "Qty", units: "Units", item_location: "Location", expires: "Expires" }} viewUpdate={false} updateItemObj={(x) => { console.log('should not have button') }} updateGI={() => { console.log('should not have button') }} viewDelete={false} deleteGI={() => { console.log('should not have button') }} viewReceive={false} receive={() => { console.log('should not have button') }} ind={1}/>}
 
 
           {!searching && groceryList.map((item, i) => {
-            return <GroceryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x) => { setItemObj(x) }} updateGI={() => { setViewUpdate(true) }} viewDelete={deleteMode} deleteGI={() => { setViewDelete(true) }} viewReceive={receiveMode} receive={() => { setViewReceive(true) }} />
+            return <GroceryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x) => { setItemObj(x) }} updateGI={() => { setViewUpdate(true) }} viewDelete={deleteMode} deleteGI={() => { setViewDelete(true) }} viewReceive={receiveMode} receive={() => { setViewReceive(true) }} ind={i}/>
           })}
 
           {searching && filtered.map((item, i) => {
-            return <GroceryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x) => { setItemObj(x) }} updateGI={() => { setViewUpdate(true) }} viewDelete={deleteMode} deleteGI={() => { setViewDelete(true) }} viewReceive={receiveMode} receive={() => { setViewReceive(true) }} />
+            return <GroceryItem key={i} item={item} viewUpdate={updateMode} updateItemObj={(x) => { setItemObj(x) }} updateGI={() => { setViewUpdate(true) }} viewDelete={deleteMode} deleteGI={() => { setViewDelete(true) }} viewReceive={receiveMode} receive={() => { setViewReceive(true) }} ind={i}/>
           })}
 
 
