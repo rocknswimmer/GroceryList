@@ -10,11 +10,11 @@ const InventoryItem = ({item, viewUpdate, updateItemObj, updateII, viewDelete, d
       {viewDelete && <button onClick={() => {updateItemObj(item);deleteII()}} className="deletee">Delete This Item</button>}
       {viewAddToGL && <button onClick={() => {updateItemObj(item);addToGL()}}>Add Item To Grocery List</button>}
       <div className={'icontainer' + (ind%2===0 ? '': ' odd')}>
-        <div className="ii">{item.item}</div>
-        <div className="ii">{item.quantity}</div>
-        <div className="ii">{item.units}</div>
-        <div className="ii">{item.item_location}</div>
-        <div className="ii">{item.expires}</div>
+        <div className={"open" + (ind===-1 ? ' top':'')}>{item.item}</div>
+        <div className={"open" + (ind===-1 ? ' top':'')}>{item.quantity}</div>
+        <div className={"open" + (ind===-1 ? ' top':'')}>{item.units}</div>
+        <div className={"open" + (ind===-1 ? ' top':'')}>{item.item_location}</div>
+        <div className={"close" + (ind===-1 ? ' top':'')}>{item.expires}</div>
       </div>
     </div>
   )

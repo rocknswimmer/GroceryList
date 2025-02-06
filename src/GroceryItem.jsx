@@ -14,9 +14,9 @@ const GroceryItem = ({item, viewUpdate, updateItemObj, updateGI, viewDelete, del
       {viewDelete && <button onClick={() => {updateItemObj(item);deleteGI()}} className="deletee">Delete This Item</button>}
       {viewReceive && <button onClick={() => {updateItemObj(item);receive()}}>Receive This Item</button>}
       <div className={'gcontainer' + (ind%2===0 ? '': ' odd')}>
-        <div className="gi">{item.item}</div>
-        <div className="gi">{item.quantity}</div>
-        <div className="gi">{item.units}</div>
+        <div className={"open" + (ind===-1 ? ' top':'')}>{item.item}</div>
+        <div className={"open" + (ind===-1 ? ' top':'')}>{item.quantity}</div>
+        <div className={"close" + (ind===-1 ? ' top':'')}>{item.units}</div>
       </div>
     </div>
   )
