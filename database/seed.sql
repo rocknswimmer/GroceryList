@@ -27,7 +27,7 @@ CREATE TABLE grocery_inventory (
 insert into grocery_users (user_num) values (100);
 insert into grocery_users (user_num) values (23);
 
-insert into grocery_inventory (user_num, item, quantity, units, item_location, expires) values (23, '', , '', '', '11/11/2030');
+-- insert into grocery_inventory (user_num, item, quantity, units, item_location, expires) values (23, '', , '', '', '11/11/2030');
 insert into grocery_inventory (user_num, item, quantity, units, item_location, expires) values (23, '', , '', '', '11/11/2030');
 insert into grocery_inventory (user_num, item, quantity, units, item_location, expires) values (23, '', , '', '', '11/11/2030');
 insert into grocery_inventory (user_num, item, quantity, units, item_location, expires) values (23, '', , '', '', '11/11/2030');
@@ -48,7 +48,7 @@ insert into grocery_inventory (user_num, item, quantity, units, item_location, e
 insert into grocery_inventory (user_num, item, quantity, units, item_location, expires) values (23, '', , '', '', '11/11/2030');
 insert into grocery_inventory (user_num, item, quantity, units, item_location, expires) values (23, '', , '', '', '11/11/2030');
 
-insert into grocery_list (user_num, item, quantity, units) values (23, '', , '');
+-- insert into grocery_list (user_num, item, quantity, units) values (23, '', , '');
 insert into grocery_list (user_num, item, quantity, units) values (23, '', , '');
 insert into grocery_list (user_num, item, quantity, units) values (23, '', , '');
 insert into grocery_list (user_num, item, quantity, units) values (23, '', , '');
