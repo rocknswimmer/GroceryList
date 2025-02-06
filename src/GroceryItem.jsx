@@ -13,7 +13,11 @@ const GroceryItem = ({item, viewUpdate, updateItemObj, updateGI, viewDelete, del
       {viewUpdate && <button onClick={() => {updateItemObj(item);updateGI()}}>Update This Item</button>}
       {viewDelete && <button onClick={() => {updateItemObj(item);deleteGI()}} className="deletee">Delete This Item</button>}
       {viewReceive && <button onClick={() => {updateItemObj(item);receive()}}>Receive This Item</button>}
-      <span>{item.item} {item.quantity} {item.units} </span>
+      <div className='gcontainer'>
+        <div className="gi">{item.item}</div>
+        <div className="gi">{item.quantity}</div>
+        <div className="gi">{item.units}</div>
+      </div>
     </div>
   )
 }
