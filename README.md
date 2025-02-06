@@ -10,7 +10,7 @@ App built to allow users to track inventory of items on hand and a create grocer
 **<span style="text-decoration:underline;">Installation and Set up:</span>**
 
 1. Run npm install to install dependencies
-2. Create a .env file and fill in the the following information that pertains to your database instance.
+2. Create a .env file and fill in the the following with the information that pertains to your database instance.
   PGUSER = ''
   PGHOST = ''
   PGDATABASE = ''
@@ -18,7 +18,7 @@ App built to allow users to track inventory of items on hand and a create grocer
   PGPASSWORD = ''
 3. Seed the database by running \i filepath; with the file path being the path to the seed.sql file in the database directory of this project
 4. Run npm run build for the project to be bundled for use
-5. Run npm run server and your server should no be running on port 3023
+5. Run npm run server and your server should now be running on port 3023
 6. You can not view the app at [Site Link](http://localhost:3023/)
 
 **<span style="text-decoration:underline;">Walkthrough:</span>**
@@ -33,5 +33,24 @@ The src directory contains the source code for all of the components of the appl
 
 **<span style="text-decoration:underline;">App:</span>**
 
+This is the main body of the application.
 
+The first important components to consider are the ThemeProvider and Global Styles components. These components take the theme from Themes.js and apply them depending on whether light or dark mode are active. The controls for the mode are contained in the next important component, the header.
+
+The Header contains the title of the application, the light/dark mode button, and once logged in the navigation buttons for the site. The default view is the inventory view, with the Inventory and Grocery List buttons switching between the two main views of the app. The logout button returns you to the login view if you want to change which users lists you are seeing.
+
+The last two components are the Inventory and Grocery components. These are what get switched between depending on which view you are currently in.
+
+In addition to handling the login funciton and switching views, the App component also calls the get requests for the inventory and grocery lists so that both lists can be updated from either the Inventory or Grocery component as needed.
+
+**<span style="text-decoration:underline;">Inventory and Grocery:</span>**
+
+These two components have a similar design with the main difference being Inventory has a add to grocery list funciton and Grocery has a recieve into inventory funciton.
+
+These compnents take their respective lists and map them into either InventoryItem or GroceryItem components, which will be dived into in the next section.
+
+The fucitonality to add, update, delete, recieve or add to grocery list are controlled by the Footer/IFooter components(IFooter for the Inventory component).The add button of the footer will open a modal for the form needed to add an item to the database. The other button all turn on thier respective mode which make a button appear next to each Item, which can then be used to target the specific item to perform the task of the mode.
+
+
+**<span style="text-decoration:underline;">InventoryItem and GroceryItem:</span>**
 
