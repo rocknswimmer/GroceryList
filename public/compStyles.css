@@ -146,6 +146,20 @@ button {
   background: #cc0023;
   color:#FFF;
 }
+.deleteee {
+  background: #000;
+  color:#FFF;
+}
+
+.add {
+  background: green;
+  color: #FFF;
+}
+
+.update {
+  background: yellow;
+  color: #000;
+}
 
 
 /*Grid styles*/

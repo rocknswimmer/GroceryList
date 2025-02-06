@@ -10,9 +10,9 @@ const GroceryItem = ({item, viewUpdate, updateItemObj, updateGI, viewDelete, del
 
   return(
     <div>
-      {viewUpdate && <button onClick={() => {updateItemObj(item);updateGI()}} className={(ind===-1 ? 'hide':'')}>Update This Item</button>}
+      {viewUpdate && <button onClick={() => {updateItemObj(item);updateGI()}} className={(ind===-1 ? 'hide':'update')}>Update This Item</button>}
       {viewDelete && <button onClick={() => {updateItemObj(item);deleteGI()}} className={(ind===-1 ? ' hide':"deletee")}>Delete This Item</button>}
-      {viewReceive && <button onClick={() => {updateItemObj(item);receive()}} className={(ind===-1 ? 'hide':'')}>Receive This Item</button>}
+      {viewReceive && <button onClick={() => {updateItemObj(item);receive()}} className={(ind===-1 ? 'hide':'add')}>Receive This Item</button>}
       <div className={'gcontainer' + (ind%2===0 ? '': ' odd')}>
         <div className={"open" + (ind===-1 ? ' top':'')}>{item.item}</div>
         <div className={"open" + (ind===-1 ? ' top':'')}>{item.quantity}</div>
