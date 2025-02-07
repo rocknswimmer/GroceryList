@@ -34,7 +34,7 @@ const Header = ({ theme, themeToggler,viewInv, viewGro, login, logOut}) => {
       <h1 className="version">Groceries</h1>
       {login && <div className="nav">
       <button onClick={viewInv}>Inventory</button>
-      <button onClick={viewGro}>Grocery List</button>
+      <button onClick={viewGro}>Grocery</button>
       <button onClick={logOut}>Logout</button>
       </div>}
       <div>

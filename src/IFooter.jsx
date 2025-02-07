@@ -35,7 +35,7 @@ const IFooter = ({addII, updateII, deleteII, addToGL}) => {
         <button onClick={addII} >Add Item</button>
         <button onClick={updateII} >Update</button>
         <button onClick={deleteII}>Delete</button>
-        <button onClick={addToGL}>Add to List</button>
+        <button onClick={addToGL}>Add to Grocery</button>
       </div>
 
     </FooterContainer>
