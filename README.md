@@ -19,7 +19,7 @@ App built to allow users to track inventory of items on hand and a create grocer
 3. Seed the database by running \i filepath; with the file path being the path to the seed.sql file in the database directory of this project
 4. Run npm run build for the project to be bundled for use
 5. Run npm run server and your server should now be running on port 3023
-6. You can now view the app at [Site Link](http://localhost:3023/)
+6. You can now view the app at [http://localhost:3023/](http://localhost:3023/)
 
 **<span style="text-decoration:underline;">Walkthrough:</span>**
 
