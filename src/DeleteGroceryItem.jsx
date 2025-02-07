@@ -18,7 +18,7 @@ const DeleteGIForm = ({item, update, close}) => {
 
 
   return (
-    <div>
+    <div className="form">
       <h1>Are You Sure You Want To Delete This Item?</h1>
       <h2>{item.item}</h2>
       {item.quantity > 1 && <p>If you want to change the quantity, you could update the item instead.</p>}

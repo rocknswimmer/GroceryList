@@ -74,22 +74,22 @@ const AddToGLForm = ({item, update, close}) => {
 
 
   return (
-    <div>
+    <div className="form">
       <h1>Add Item To Grocery List</h1>
       <h2>double check the information</h2>
       <form onSubmit={submitAddGI}>
-      <lable>Item Name</lable>
-        <input onChange={updateName} type="text" defaultValue={item.item}></input>
+      <div className="fitem"><lable>Item Name:</lable></div>
+      <div className="fitem"><input onChange={updateName} type="text" defaultValue={item.item}></input></div>
         {nameIssue && name.length > 0 && <p className="falert">Name is wrong size or has unapproved characters</p>}
-        <br/>
-        <lable>Quantity To Purchase</lable>
-        <input onChange={updateQuantity} type="text" defaultValue={item.quantity}></input>
+
+        <div className="fitem"><lable>Quantity To Purchase:</lable></div>
+        <div className="fitem"><input onChange={updateQuantity} type="text" defaultValue={item.quantity}></input></div>
         {quantityIssue && quantity.length > 0 && <p className="falert">Quantity is wrong size or is not digits</p>}
-        <br/>
-        <lable>Units</lable>
-        <input onChange={updateUnits} type="text" defaultValue={item.units}></input>
+
+        <div className="fitem"><lable>Units:</lable></div>
+        <div className="fitem"><input onChange={updateUnits} type="text" defaultValue={item.units}></input></div>
         {unitsIssue && units.length > 0 && <p className="falert">Units are the wrong size or have unapproved characters</p>}
-        <br/>
+
         <button type="submit">Add Item</button>
       </form>
     </div>
