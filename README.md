@@ -47,10 +47,6 @@ In addition to handling the login funciton and switching views, the App componen
 
 These two components have a similar design with the main difference being Inventory has a add to grocery list funciton and Grocery has a recieve into inventory funciton.
 
-These compnents take their respective lists and map them into either InventoryItem or GroceryItem components, which will be dived into in the next section.
+These compnents take their respective lists and map them into either InventoryItem or GroceryItem components, these contain the items information, and the buttons needed to specify which item is being updated, deleted, revieved or added to the grocery list depending on the current funtion mode.
 
-The fucitonality to add, update, delete, recieve or add to grocery list are controlled by the Footer/IFooter components(IFooter for the Inventory component).The add button of the footer will open a modal for the form needed to add an item to the database. The other button all turn on thier respective mode which make a button appear next to each Item, which can then be used to target the specific item to perform the task of the mode.
-
-
-**<span style="text-decoration:underline;">InventoryItem and GroceryItem:</span>**
-
+The fucitonality to add, update, delete, recieve or add to grocery list are controlled by buttons in the Footer/IFooter components(IFooter for the Inventory components footer).The add button of the footer will open a modal for the form needed to add an item to the database. The other buttons all turn on thier respective mode which makes the appropriate buttons appear next to each Item.
