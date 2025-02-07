@@ -166,7 +166,7 @@ button {
 
 .icontainer{
   display: inline-grid;
-  grid-template-columns: 12em 3em 12em 12em 7em;
+  grid-template-columns: minmax(2px,12em) minmax(1px,3em) minmax(2px,12em) minmax(2px,12em) minmax(2px,10em);
 
 
 }
