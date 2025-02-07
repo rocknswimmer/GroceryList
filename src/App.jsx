@@ -125,11 +125,14 @@ function App() {
         {login && invMode && <Inventory inventoryList={inventoryList} updateIL={()=>{getIL()}} updateGL={()=>{getGL()}} user={user} theme={theme} />}
         {login && groMode && <Grocery groceryList={groceryList} updateGL={()=>{getGL()}} updateIL={()=>{getIL()}} user={user} theme={theme}/>}
         {!login &&
-        <div>
+        <div className="login">
           <h1>Input a user number or sign in as user 100</h1>
           <div>
+            <div>
           <input type="text" name="userNumber" placeholder="Input a 1-2 digit number" onChange={updateUser}></input>
+          </div>
           <button onClick={logIn}>Login to a chosen user</button>
+          <h3>Or Login To User 100</h3>
           <button onClick={logIn100}>Login as user 100</button>
           </div>
           {issue && <p className="falert">Input wrong size or not digits</p>}
